@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var twitter = require('twit');
 var routes = require('./routes');
 var config = require('./config');
-var streamHandler = require('./utils/streamHandler');
+var Tweet = require('./models/Tweet');
 
 var app = express();
 var port = process.env.PORT || 7777;
@@ -37,7 +37,7 @@ var server = http.createServer(app).listen(port, function() {
 var io = require('socket.io').listen(server);
 
 // Set a stream listener for tweets matching tracking keywords
-var stream =  twit.stream('statuses/filter',{ track: '#DilwaleNewPromo'});
+var stream =  twit.stream('statuses/filter',{ track: '#nodejs'});
 stream.on('tweet', function(data) {
 	// new tweet object
     var tweet = {

@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Tweet = require('../models/Tweet');
 
 var schema = new mongoose.Schema({
 	twid: String,
@@ -16,7 +17,7 @@ schema.statics.getTweets = function(page, skip, callback) {
 	var start = (page * 10) + (skip * 1);
 
 	Tweet
-		.find({}, 'twid active author avatar body date screenname', {skip: start, limit: 10})
+		.find({},'twid active author avatar body date screenname', {skip: start, limit: 10})
 		.sort({date: 'desc'})
 		.exec(function(err, data) {
 			if(!err) {
