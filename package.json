@@ -1,0 +1,36 @@
+{
+  "name": "twitter-bot",
+  "version": "1.0.0",
+  "description": "A realtime twitter stream using react express mongo",
+  "main": "index.js",
+  "scripts": {
+    "watch": "watchify app.js -o public/js/bundle.js -v",
+    "browserify": "browserify app.js | uglifyjs > public/js/bundle.js",
+    "build": "npm run browserify ",
+    "start": "npm run watch & nodemon server.js"
+  },
+  "dependencies": {
+    "express": "~4.9.7",
+    "express-handlebars": "~1.1.0",
+    "mongoose": "*",
+    "node-jsx": "*",
+    "ntwitter": "^0.5.0",
+    "react": "*",
+    "socket.io": "*",
+    "twit": "^2.1.1"
+  },
+  "devDependencies": {
+    "browserify": "*",
+    "nodemon": "^1.2.1",
+    "reactify": "*",
+    "uglify-js": "*",
+    "watchify": "*"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  },
+  "author": "Vikram <vikramcse.10@gmail.com>",
+  "license": "ISC"
+}
